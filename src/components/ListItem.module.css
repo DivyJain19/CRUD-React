@@ -1,0 +1,15 @@
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid red;
+  margin: 2rem auto;
+}
+.list h3 {
+  margin: 1rem;
+  /* padding-right: 1rem; */
+  /* border-right: 1px solid white; */
+}
+.list button {
+  margin: auto 0.5rem;
+}
