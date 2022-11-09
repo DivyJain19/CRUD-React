@@ -28,12 +28,8 @@ const arr = [
 function App() {
   function deleteItem(id) {
     let arr = [...list];
-    arr.forEach((item) => {
-      if (item.id === id) {
-        arr.splice(arr.indexOf(item), 1);
-      }
-    });
-    setList(arr);
+    let temp = arr.filter((item) => item.id !== id);
+    setList(temp);
   }
   function editItem(id) {
     let arr = [...list];
@@ -45,14 +41,22 @@ function App() {
     setList(arr);
   }
   function handleChange(id, val, name) {
-    // console.log(id);
-    // console.log(val);
-    // console.log(name);
     let arr = [...list];
     arr.forEach((item) => {
       if (item.id === id) {
         item[name] = val;
       }
+    });
+    setList(arr);
+  }
+  function handleAdd(name, email, dob) {
+    let arr = [...list];
+    arr.push({
+      name: name,
+      email: email,
+      DOB: "dob",
+      id: Math.random(),
+      edit: false,
     });
     setList(arr);
   }
@@ -63,6 +67,7 @@ function App() {
       editItem={editItem}
       list={list}
       changeItem={handleChange}
+      addItem={handleAdd}
     />
   );
 }

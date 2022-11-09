@@ -2,17 +2,15 @@ import React from "react";
 import classes from "./ListItem.module.css";
 const ListItem = (props) => {
   function deleteHandler() {
-    // console.log(props.id);
     props.handleDelete(props.id);
   }
   function editHandler() {
     console.log(props.id);
     props.handleEdit(props.id);
   }
-  function saveHandler() {
-    props.handleEdit(props.id);
-  }
+
   function editChangeHandler(e) {
+    e.preventDefault();
     props.handleChange(props.id, e.target.value, e.target.name);
   }
   if (props.edit) {
@@ -22,7 +20,7 @@ const ListItem = (props) => {
         <input name="email" onChange={editChangeHandler} value={props.email} />
         <input name="DOB" onChange={editChangeHandler} value={props.DOB} />
         <div>
-          <button onClick={saveHandler}>Save</button>
+          <button onClick={editHandler}>Save</button>
           <button onClick={deleteHandler}>Delete</button>
         </div>
       </div>
